@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0f1720">
 <title>Dashboard</title>
+<link rel="stylesheet" href="/Pano/latest/pano.css">
 <style>
 :root{
   --bg:#f3f1ec; --card:#ffffff; --fg:#1d1c1a; --muted:#6c6a66; --line:#e4e1da;
@@ -216,89 +217,37 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
 }
 .pv-frame iframe{position:absolute;top:0;left:0;border:0;width:100%;height:100%;transform-origin:0 0;background:#fff}
 .pv-url{margin:0;font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-/* ---------- Paño, the cat guide ---------- */
-:root{ --cat:#ff4d4f; --cat-ink:#d93a3c; --kb:0px; --bubble:#fdeaea; --bubble-line:#f3c4c5 }
-@media (prefers-color-scheme: dark){ :root{ --cat-ink:#ff6b6d; --bubble:#2e1d23; --bubble-line:#4f2c33 } }
-.gcat{position:fixed;left:0;top:0;width:76px;height:92px;z-index:9070;padding:0;margin:0;border:0;background:none;cursor:pointer;
-  filter:drop-shadow(0 6px 12px rgba(0,0,0,.35));will-change:transform;-webkit-tap-highlight-color:transparent}
-.gbody{display:block;width:100%;height:100%;transform-origin:50% 100%}
-.gcat svg{width:100%;height:100%;display:block;overflow:visible;transition:transform .25s}
-.gcat svg.flip{transform:scaleX(-1)}
-.gtail{transform-box:view-box;transform-origin:46px 111px;animation:gtail 2.6s ease-in-out infinite}
-.gcat.walking .gtail{animation-duration:.45s}
-@keyframes gtail{0%,100%{transform:rotate(0)}50%{transform:rotate(-12deg)}}
-.geyes{transform-box:fill-box;transform-origin:50% 50%;animation:gblink 5s infinite}
-@keyframes gblink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.12)}}
-.ghead{transform-box:view-box;transform-origin:41px 54px;transition:transform .3s}
-.gcat:hover .ghead{transform:rotate(-8deg)}
-.gcat.talk .ghead{animation:gnod .5s ease-in-out 2}
-@keyframes gnod{0%,100%{transform:rotate(0)}50%{transform:rotate(-7deg)}}
-.gcat:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:8px}
-.gcat{touch-action:none;cursor:grab}
-.gcat.dragging{cursor:grabbing}
-.gcat.dragging .gbody{transform:scale(1.08)}
-/* head mode: just his head, parked at the top middle, above everything else on the page */
-.gcat.head{width:144px;height:108px;z-index:2147483000}
-.gwavy{display:none}
-.gcat.head .gtail,.gcat.head .gtorso,.gcat.head .gwhisk{display:none}
-.gcat.head .gwavy{display:inline}
-.gwavy path{fill:none;stroke:#ff4d4f;stroke-width:1.6;stroke-linecap:round;transform-box:fill-box;animation:gwig 1.1s ease-in-out infinite alternate}
-.gwavy .wl{transform-origin:100% 50%}.gwavy .wr{transform-origin:0 50%}
-.gwavy path:nth-child(2){animation-delay:-.35s}.gwavy path:nth-child(3){animation-delay:-.6s}.gwavy path:nth-child(4){animation-delay:-.9s}
-@keyframes gwig{0%{transform:rotate(-7deg) scaleY(1)}50%{transform:rotate(1deg) scaleY(-1)}100%{transform:rotate(7deg) scaleY(1)}}
-.gbubble{position:fixed;z-index:9060;width:320px;max-width:calc(100vw - 16px);padding:16px 16px 14px;border-radius:var(--radius);
-  background:var(--bubble);border:1px solid var(--bubble-line);box-shadow:0 12px 32px rgba(0,0,0,.18);
-  color:var(--fg);font-size:14px;line-height:1.5}
-.gbubble::after{content:"";position:absolute;left:var(--tx,50%);bottom:-8px;width:14px;height:14px;background:var(--bubble);
-  border-right:1px solid var(--bubble-line);border-bottom:1px solid var(--bubble-line);transform:translateX(-50%) rotate(45deg)}
-.gbubble.below::after{bottom:auto;top:-8px;transform:translateX(-50%) rotate(225deg)}
-.gbubble.beside::after{display:none}
-.gsay{margin:0 26px 10px 0}
-.gsay b{font-weight:650}
-.gname{display:block;color:var(--cat-ink);font-size:12px;font-weight:700;letter-spacing:.04em;margin-bottom:2px}
-.gstep{display:block;color:var(--accent);font-size:12px;font-weight:650;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
-.gre{display:block;color:var(--muted);font-style:italic;margin-bottom:6px}
-.gask{display:flex;gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
-.gask input{flex:1 1 auto;min-width:0;min-height:40px;font:inherit;font-size:16px;color:var(--fg);background:var(--bg);
-  border:1px solid var(--line);border-radius:12px;padding:0 12px}
-.gask input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
-.gask button{flex:none;width:40px;height:40px;padding:0;border:0;border-radius:12px;background:var(--accent);color:#1d1c1a;
-  display:grid;place-items:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.gask button:active{filter:brightness(.92)}
-.gask button svg{width:17px;height:17px}
-.gyou{display:block;color:var(--muted);margin-bottom:6px;overflow-wrap:anywhere}
-.gthink{display:block;color:var(--muted);font-style:italic}
-.gthink i{font-style:normal;animation:gdot 1.1s infinite}
-.gthink i:nth-child(2){animation-delay:.16s}
-.gthink i:nth-child(3){animation-delay:.32s}
-@keyframes gdot{0%,60%,100%{opacity:.25}30%{opacity:1}}
-.gquote{display:block;margin-top:8px;padding:10px 12px;border-radius:12px;background:var(--bg);border-left:3px solid var(--accent);font-size:13.5px}
-.gacts{display:flex;flex-wrap:wrap;gap:6px}
-.gacts:empty{display:none}
-.gbtn{min-height:44px;padding:9px 14px;border-radius:14px;background:var(--bg);border:1px solid var(--line);color:var(--fg);
-  font:inherit;font-size:14.5px;font-weight:600;line-height:1.3;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.gbtn:active{filter:brightness(.94)}
-.gbtn:hover,.gbtn:focus-visible{border-color:var(--accent)}
-.gbtn.pri{color:#1d1c1a;border-color:var(--accent);background:var(--accent)}
-.gbtn.quiet{background:none;border-color:transparent;color:var(--muted);font-weight:500}
-.gbtn.quiet:hover{color:var(--fg)}
-.gx{position:absolute;right:6px;top:6px;width:32px;height:32px;padding:0;border:0;border-radius:50%;background:none;color:var(--muted);display:grid;place-items:center;cursor:pointer}
-.gx:hover{background:var(--bg)}
-.gx svg{width:10px;height:10px}
-.gring{position:fixed;z-index:9055;pointer-events:none;border:2px solid var(--accent);border-radius:18px;animation:gring 1.4s ease-out infinite;transition:opacity .2s}
-@keyframes gring{0%{box-shadow:0 0 0 0 rgba(232,137,44,.55)}100%{box-shadow:0 0 0 14px rgba(232,137,44,0)}}
-.gsafe{position:fixed;left:0;bottom:0;width:0;height:env(safe-area-inset-bottom,0px);pointer-events:none;visibility:hidden}
-@media (max-width:640px){
-  .gcat{width:54px;height:65px;z-index:9065}
-  .gcat.head{width:120px;height:90px;z-index:2147483000}
-  .gbubble{left:8px!important;right:8px;top:auto!important;bottom:calc(12px + env(safe-area-inset-bottom,0px) + var(--kb));
-    width:auto;max-width:none;min-height:92px;padding-left:76px}
-  .gbubble::after{display:none}
+/* ---------- Paño, the cat guide ----------
+   His own styles load from /Pano/latest/pano.css. This is how he is dressed on this page:
+   the colors and sizes of his bubble and buttons, to match the cards. */
+:root{
+  --cat-ink:#d93a3c; --bubble:#fdeaea; --bubble-line:#f3c4c5;
+  --pano-bubble:var(--bubble); --pano-line:var(--bubble-line); --pano-ink:var(--fg);
+  --pano-name:var(--cat-ink); --pano-soft:var(--muted); --pano-step:var(--accent);
+  --pano-accent:var(--accent); --pano-accent-ink:#1d1c1a; --pano-glow:rgba(232,137,44,.55); --pano-glow-0:rgba(232,137,44,0);
+  --pano-btn:var(--bg); --pano-btn-line:var(--line); --pano-btn-hover:var(--bg);
+  --pano-btn-h:44px; --pano-btn-pad:9px 14px; --pano-btn-radius:14px; --pano-btn-font:14.5px; --pano-btn-align:left;
+  --pano-radius:var(--radius); --pano-font:14px; --pano-ring-radius:18px;
+  --pano-shadow:rgba(0,0,0,.35); --pano-bubble-shadow:0 12px 32px rgba(0,0,0,.18);
 }
-@media (prefers-reduced-motion: reduce){ .gtail,.geyes,.gring,.gcat.talk .ghead,.gthink i,.gwavy path{animation:none} }
+@media (prefers-color-scheme: dark){ :root{ --cat-ink:#ff6b6d; --bubble:#2e1d23; --bubble-line:#4f2c33 } }
+#gcat,#gbubble button{-webkit-tap-highlight-color:transparent}
+
+/* ---------- Backgrounds Paño can switch between ----------
+   .wall sits behind everything. He sets data-wall on it, and wipes a new one in on a .wallnext layer. */
+body{background:none}
+.wall{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.wall,.wallnext{background:var(--bg)}
+.wall[data-wall="sunrise"],.wallnext[data-wall="sunrise"]{background:linear-gradient(165deg,#ffdfbd 0%,#fbe1e2 48%,#e4eafb 100%)}
+.wall[data-wall="ocean"],.wallnext[data-wall="ocean"]{background:linear-gradient(180deg,#c6e3f5 0%,#e3f3ef 100%)}
+@media (prefers-color-scheme: dark){
+  .wall[data-wall="sunrise"],.wallnext[data-wall="sunrise"]{background:linear-gradient(165deg,#3d2514 0%,#2d1a25 48%,#151c31 100%)}
+  .wall[data-wall="ocean"],.wallnext[data-wall="ocean"]{background:linear-gradient(180deg,#0a2436 0%,#0e2b2a 100%)}
+}
 </style>
 </head>
 <body>
+<div class="wall" id="wall" aria-hidden="true"></div>
 <main class="dash">
 
   <section class="clk" id="clock" aria-label="Current time">
@@ -438,32 +387,10 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
   </section>
 
 </main>
-<!-- Paño: a cat guide that asks what you want to do and walks you through it -->
-<button class="gcat" id="gcat" type="button" hidden aria-label="Ask Paño the cat for help"><span class="gbody"><svg viewBox="0 0 100 120" aria-hidden="true">
-  <g class="gtail"><path d="M46 111 C 16 113, 4 88, 12 64 C 17 50, 30 48, 28 60" fill="none" stroke="#ff4d4f" stroke-width="10" stroke-linecap="round"/></g>
-  <path class="gtorso" d="M29 50 C 18 70, 16 96, 20 114 L60 114 C 64 96, 62 70, 51 50 Z" fill="#ff4d4f"/>
-  <g class="ghead"><g transform="translate(41 38) rotate(6)">
-    <path d="M-16 -29 L-7 -15 Q 0 -17.5 7 -15 L16 -29 L17 -6 C 18 4, 12 13, 0 15 C -12 13, -18 4, -17 -6 Z" fill="#ff4d4f"/>
-    <g class="geyes"><ellipse cx="-6" cy="0" rx="2.8" ry="3.8" fill="#07100b"/><ellipse cx="6" cy="0" rx="2.8" ry="3.8" fill="#07100b"/></g>
-    <path class="gwhisk" d="M-15 6 L-31 3 M-14.5 9.5 L-31 11.5 M15 6 L31 3 M14.5 9.5 L31 11.5" stroke="#ff4d4f" stroke-width="1.6" stroke-linecap="round"/>
-    <g class="gwavy"><path class="wl" d="M-15 6 q-2.67 -2.4 -5.33 -1 t-5.33 -1 t-5.34 -1"/><path class="wl" d="M-14.5 9.5 q-2.75 -1.8 -5.5 .67 t-5.5 .67 t-5.5 .66"/><path class="wr" d="M15 6 q2.67 -2.4 5.33 -1 t5.33 -1 t5.34 -1"/><path class="wr" d="M14.5 9.5 q2.75 -1.8 5.5 .67 t5.5 .67 t5.5 .66"/></g>
-  </g></g>
-</svg></span></button>
-<div class="gbubble" id="gbubble" hidden role="dialog" aria-label="Paño">
-  <button class="gx" id="gx" type="button" aria-label="Close Paño"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-  <p class="gsay" id="gsay" aria-live="polite"></p>
-  <div class="gacts" id="gacts"></div>
-  <form class="gask" id="gask" hidden autocomplete="off">
-    <input id="gaskIn" type="text" maxlength="200" enterkeyhint="send" placeholder="Ask Paño anything…" aria-label="Ask Paño anything">
-    <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg></button>
-  </form>
-  <form class="gask" id="gkey" hidden autocomplete="off">
-    <input id="gkeyIn" type="password" spellcheck="false" placeholder="sk-ant-…" aria-label="Anthropic API key">
-    <button type="submit" aria-label="Save key"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 7"/></svg></button>
-  </form>
-</div>
-<div class="gring" id="gring" hidden></div>
-<div class="gsafe" id="gsafe" aria-hidden="true"></div>
+<!-- Paño the cat: his body, engine, skills and brain live in the Pano repo. This line loads him;
+     his adapter (what this page has for him) is the last script on the page. -->
+<script src="/Pano/latest/pano.js"></script>
+
 
 
 <script>
@@ -967,898 +894,61 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
 <script>
 (() => {
   /* =====================================================================
-     PANO, THE CAT: asks what you want to do, then walks you through it
-     step by step. Same red cat and moves as the portfolio's guide.
+     PAÑO, THE CAT. His body and engine load from the Pano repo (/Pano/latest/pano.js),
+     his skills from /Pano/latest/skills/, and everything he says from his brain
+     (/Pano/latest/brain/dashboard.json plus the shared core.json).
+     What stays here is what only this page knows: where things are, how to
+     read his tours, and his adapter. If his files fail to load, the page works without him.
      ===================================================================== */
+  if (!window.Pano) return;
   const $ = (s, r = document) => r.querySelector(s);
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const narrow = () => innerWidth <= 640;
-  const sleep = ms => new Promise(r => setTimeout(r, ms));
-  const store = {
-    get(k, d){ try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
-    set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
-    del(k){ try { localStorage.removeItem(k); } catch (e) {} }
-  };
+  const store = { get(k, d){ try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } } };
+  const PORTFOLIO = 'https://marquisphill.github.io/Professional-Portfolio2-STAGING/';
 
-  /* ---------- spring easing via CSS linear() ---------- */
-  const linearOK = CSS.supports('animation-timing-function', 'linear(0, 1)');
-  function spring(stiffness, damping, mass = 1) {
-    if (!linearOK) return { easing: 'cubic-bezier(.2,1.25,.35,1)', duration: 520 };
-    let x = 0, v = 0, t = 0, next = 1 / 60;
-    const dt = 1 / 600, pts = [0];
-    while (t < 3) {
-      const a = (-stiffness * (x - 1) - damping * v) / mass;
-      v += a * dt; x += v * dt; t += dt;
-      if (t >= next) { pts.push(x); next += 1 / 60; if (Math.abs(x - 1) < 0.001 && Math.abs(v) < 0.01) break; }
-    }
-    pts[pts.length - 1] = 1;
-    return { easing: `linear(${pts.map(p => +p.toFixed(4)).join(',')})`, duration: Math.round(pts.length * 1000 / 60) };
-  }
-  const SPRING_WIN = spring(210, 19), SPRING_MENU = spring(260, 24);
-  const EASE_OUT = 'cubic-bezier(.16,1,.3,1)';
-  const anim = (el, k, o) => reduce ? { finished: Promise.resolve() } : el.animate(k, o);
-
-  const gcat = $('#gcat'), gbodyEl = $('.gbody', gcat), gsvg = $('svg', gcat), gbub = $('#gbubble'), gsay = $('#gsay'), gacts = $('#gacts'), gring = $('#gring');
-  const CAT_W = () => narrow() ? 54 : 76, CAT_H = () => narrow() ? 65 : 92;
-  let catPos = { x: 0, y: 0 }, tour = null, stepToken = 0, ringTarget = null, ringRAF = 0, msgSeq = 0, kb = 0;
-
-  // bottom safe area (gesture bar) and on-screen keyboard height
-  const safeBottom = () => $('#gsafe').offsetHeight || 0;
-  const restSpot = () => narrow() ? dockSpot() : { x: innerWidth - 24 - CAT_W(), y: innerHeight - 24 - safeBottom() - CAT_H() };
-  const dockSpot = () => ({ x: 16, y: innerHeight - kb - safeBottom() - 12 - CAT_H() - 12 });
-  // first visit: tucked into the bottom-right corner
-  const cornerSpot = () => narrow() ? { x: innerWidth - CAT_W() - 12, y: innerHeight - safeBottom() - CAT_H() - 12 } : restSpot();
-  const clampSpot = (p, w, h) => ({ x: Math.min(innerWidth - w, Math.max(0, p.x)), y: Math.min(innerHeight - h, Math.max(0, p.y)) });
-  // head mode: just his head, parked at the top middle (or wherever the user dragged it)
-  const HEAD_W = () => narrow() ? 120 : 144, HEAD_H = () => narrow() ? 90 : 108;
-  const FULL_VB = '0 0 100 120', HEAD_VB = '5 3 72 54';
-  let headMode = false, headHome = false, headPos = null;
-  let hasInteracted = false, idleT = 0, dragging = false;
-  try { headPos = JSON.parse(sessionStorage.getItem('panoHeadPos') || 'null'); } catch (e) {}
-  function headSpot() {
-    const p = headPos ? { x: headPos.fx * innerWidth - HEAD_W() / 2, y: headPos.y } : { x: innerWidth / 2 - HEAD_W() / 2, y: 6 };
-    return clampSpot(p, HEAD_W(), HEAD_H());
-  }
-  // where he stands to talk: on phones inside the docked bubble; once he's lived at the top, just under his head spot
-  function homeSpot() {
-    if (narrow()) return dockSpot();
-    if (headHome) { const h = headSpot(); return clampSpot({ x: h.x + HEAD_W() / 2 - CAT_W() / 2, y: Math.max(8, h.y) }, CAT_W(), CAT_H() + 48); }
-    return restSpot();
-  }
-
-  function setCat(p, flip) {
-    catPos = p; gcat.style.transform = `translate(${Math.round(p.x)}px, ${Math.round(p.y)}px)`;
-    if (flip != null) gsvg.classList.toggle('flip', flip);
-  }
-  const walkMs = dist => reduce || dist < 6 ? 0 : Math.min(1100, 340 + dist * .7);
-  async function moveCat(p, flipAtEnd) {
-    if (headMode) exitHead();
-    gcat.getAnimations().forEach(a => a.cancel());
-    const from = catPos, dx = p.x - from.x, dy = p.y - from.y, dist = Math.hypot(dx, dy);
-    if (reduce || dist < 6) { setCat(p, flipAtEnd); return; }
-    if (Math.abs(dx) > 4) gsvg.classList.toggle('flip', dx < 0);
-    const hops = Math.max(1, Math.round(dist / 160)), dur = walkMs(dist), lift = Math.min(36, 14 + dist / hops / 8);
-    const frames = [];
-    for (let i = 0; i <= hops * 2; i++) {
-      const t = i / (hops * 2);
-      frames.push({ transform: `translate(${from.x + dx * t}px, ${from.y + dy * t - (i % 2 ? lift : 0)}px)` });
-    }
-    gcat.classList.add('walking');
-    try { await gcat.animate(frames, { duration: dur, easing: 'ease-in-out' }).finished; } catch (e) { return; }
-    gcat.classList.remove('walking');
-    setCat(p, flipAtEnd);
-    gbodyEl.animate([{ transform: 'scale(1.1,.86)' }, { transform: 'none' }], { duration: 300, easing: EASE_OUT });
-  }
-  function cheer() {
-    if (reduce) return;
-    gbodyEl.animate([{ transform: 'none' }, { transform: 'translateY(-22px) rotate(-6deg)', offset: .4 }, { transform: 'scale(1.08,.9)', offset: .8 }, { transform: 'none' }], { duration: 520, easing: 'ease-out' });
-  }
-  function talk() { gcat.classList.remove('talk'); void gcat.offsetWidth; gcat.classList.add('talk'); }
-
-  function placeBubble() {
-    if (gbub.hidden || narrow()) return;
-    const bottomGap = 12 + safeBottom();
-    const bw = gbub.offsetWidth, bh = gbub.offsetHeight, cx = catPos.x + CAT_W() / 2;
-    const left = Math.min(innerWidth - bw - 8, Math.max(8, cx - bw / 2));
-    let top = catPos.y - bh - 14, below = false;
-    if (top < 8) { top = catPos.y + CAT_H() + 14; below = true; }
-    top = Math.min(top, innerHeight - bottomGap - bh);
-    // if that would cover what Paño is pointing at, or Paño himself, sit the bubble beside him
-    const t = ringTarget && ringTarget.isConnected ? ringTarget.getBoundingClientRect() : null;
-    const me = { left: catPos.x, right: catPos.x + CAT_W(), top: catPos.y, bottom: catPos.y + CAT_H() };
-    const over = (o, l, tp) => o && l < o.right && l + bw > o.left && tp < o.bottom && tp + bh > o.top;
-    const hits = (l, tp) => over(t, l, tp) || over(me, l, tp);
-    if (hits(left, top)) {
-      const sideTop = Math.min(innerHeight - bottomGap - bh, Math.max(8, catPos.y + CAT_H() / 2 - bh / 2));
-      const right = catPos.x + CAT_W() + 10, leftSide = catPos.x - bw - 10;
-      const spots = [[right, sideTop], [leftSide, sideTop]];
-      if (t) spots.push([t.right + 12, top], [t.left - bw - 12, top]);
-      const pick = spots.find(([l, tp]) => l >= 8 && l + bw <= innerWidth - 8 && !hits(l, tp));
-      if (pick) {
-        gbub.style.left = pick[0] + 'px'; gbub.style.top = pick[1] + 'px';
-        gbub.classList.remove('below'); gbub.classList.add('beside');
-        return;
-      }
-    }
-    gbub.classList.remove('beside');
-    gbub.style.left = left + 'px'; gbub.style.top = top + 'px';
-    gbub.classList.toggle('below', below);
-    gbub.style.setProperty('--tx', Math.min(bw - 22, Math.max(22, cx - left)) + 'px');
-  }
-  function say(html, actions = []) {
-    if (headMode) exitHead();
-    msgSeq++;
-    gsay.innerHTML = html; gacts.innerHTML = '';
-    actions.forEach(a => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'gbtn' + (a.pri ? ' pri' : '') + (a.quiet ? ' quiet' : '');
-      b.textContent = a.label; b.addEventListener('click', a.fn);
-      gacts.appendChild(b);
-    });
-    const was = gbub.hidden;
-    gbub.hidden = false;
-    if (talking !== 'key') gkey.hidden = true;
-    gask.hidden = !!tour || talking === 'key';
-    placeBubble();
-    if (was) anim(gbub, [{ opacity: 0, transform: 'translateY(8px) scale(.96)' }, { opacity: 1, transform: 'none' }], { duration: SPRING_MENU.duration, easing: SPRING_MENU.easing });
-    else anim(gsay, [{ opacity: .3 }, { opacity: 1 }], { duration: 220, easing: EASE_OUT });
-    talk();
-    armIdle();   // after the bubble is up, so the timer knows he's showing something
-  }
-  const hideBubble = () => { gbub.hidden = true; gask.hidden = gkey.hidden = true; };
-
-  // the bubble grows when a form or a longer answer appears: re-place it so it never lands on Paño
-  if (window.ResizeObserver) new ResizeObserver(() => { if (!gbub.hidden) placeBubble(); }).observe(gbub);
-
-  function ringOn(el) {
-    ringTarget = el; gring.hidden = false; cancelAnimationFrame(ringRAF);
-    const loop = () => {
-      if (!ringTarget || !ringTarget.isConnected) { gring.hidden = true; return; }
-      const r = ringTarget.getBoundingClientRect();
-      gring.style.opacity = r.width ? 1 : 0;
-      gring.style.left = (r.left - 6) + 'px'; gring.style.top = (r.top - 6) + 'px';
-      gring.style.width = (r.width + 12) + 'px'; gring.style.height = (r.height + 12) + 'px';
-      ringRAF = requestAnimationFrame(loop);
-    };
-    loop();
-  }
-  function ringOff() { ringTarget = null; gring.hidden = true; cancelAnimationFrame(ringRAF); }
-  function waitFor(fn, ms = 5000) {
-    return new Promise(res => {
-      const t0 = performance.now();
-      const tick = () => {
-        let v = null; try { v = fn(); } catch (e) {}
-        if (v) return res(v);
-        if (performance.now() - t0 > ms) return res(null);
-        requestAnimationFrame(tick);
-      };
-      tick();
-    });
-  }
-
-  /* ---------- scrolling the page so the target is in view ---------- */
-  let autoScroll = false;
-  function scrollTo(y) {
-    y = Math.max(0, Math.min(y, document.documentElement.scrollHeight - innerHeight));
-    if (Math.abs(y - scrollY) < 4) return Promise.resolve();
-    autoScroll = true;
-    scrollTo_(y);
-    return new Promise(res => {
-      let last = -1, still = 0; const t0 = performance.now();
-      const tick = () => {
-        if (Math.abs(scrollY - last) < .5) still++; else still = 0;
-        last = scrollY;
-        if (still > 4 || performance.now() - t0 > 1200) { setTimeout(() => { autoScroll = false; }, 60); return res(); }
-        requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    });
-  }
-  const scrollTo_ = y => window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
-  // wide: put the target about a third of the way down the screen
-  function scrollWide(el) {
-    const r = el.getBoundingClientRect();
-    if (r.top >= 16 && r.bottom <= innerHeight - 24 - safeBottom()) return Promise.resolve();
-    return scrollTo(scrollY + r.top - Math.max(16, Math.min(innerHeight * .3, (innerHeight - r.height) / 2)));
-  }
-  // narrow: the bubble is a bottom sheet, so fit the target in the space above it
-  function scrollNarrow(el) {
-    const r = el.getBoundingClientRect(), avail = gbub.getBoundingClientRect().top - 12;
-    if (r.top >= 12 && r.bottom <= avail) return Promise.resolve();
-    return scrollTo(scrollY + r.top - Math.max(12, (avail - r.height) / 2));
-  }
-  async function goNear(el) {
-    if (narrow()) { await moveCat(dockSpot(), false); return; }
-    const r = el.getBoundingClientRect(), W = CAT_W(), H = CAT_H();
-    let x = r.right + 12, flip = true;
-    if (x + W > innerWidth - 8) { x = r.left - W - 12; flip = false; }
-    if (x < 8) { x = innerWidth - W - 16; flip = true; }
-    const y = Math.min(innerHeight - 24 - safeBottom() - H, Math.max(8, r.top + r.height / 2 - H / 2));
-    await moveCat({ x, y }, flip);
-  }
-
-  // touch screens get "tap" instead of "click"
-  const forTouch = t => (narrow() || matchMedia('(pointer: coarse)').matches) ? t.replace(/\bClick\b/g, 'Tap').replace(/\bclick\b/g, 'tap') : t;
-
-  /* ---------- what Paño knows about the dashboard ---------- */
-  const shown = el => el && !el.closest('[hidden]') && el.getClientRects().length ? el : null;
+  // ---- what this page knows about itself
   const hasToken = () => !!store.get('dev-pd-gh-token', '');
   const latestReq = () => { const r = store.get('dev-pd-proto-requests-v2', []); return r[0] ? r[0].id : null; };
-  let baseReq = null, talking = null;
+  let baseReq = null;                                   // the newest request when a tour began
   const launched = () => latestReq() !== baseReq;
   const featureVal = () => $('#lpIdea').value.trim();
-  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const pick = a => a[Math.floor(Math.random() * a.length)];
-
-  // what Paño remembers about you (this device only)
-  const MEM_KEY = 'dev-pd-pano-mem', SEEN_KEY = 'dev-pd-pano-seen';
-  const mem = Object.assign({}, store.get(MEM_KEY, {}));
-  const saveMem = () => store.set(MEM_KEY, mem);
-  const seen = Object.assign({ tours: [], talks: [], topics: [] }, store.get(SEEN_KEY, {}));
-  function markSeen(kind, key) { if (!seen[kind].includes(key)) { seen[kind].push(key); store.set(SEEN_KEY, seen); } }
-
-  /* =====================================================================
-     SHOWING: tutorials are little movies. Paño walks you through them.
-     ===================================================================== */
-  function launchSteps() {
-    const steps = [];
-    if (!hasToken()) steps.push(
-      { say: 'First I need your GitHub token so the launcher can reach Claude. Click the <b>gear</b>.',
-        target: () => $('#lpGear'), done: () => !$('#lpSettings').hidden || hasToken(),
-        act: () => $('#lpGear').click(), actLabel: 'Open it for me' },
-      { say: 'Paste a fine-grained token (repo <b>Personal-Dashboard</b>, <b>Actions: Read and write</b>), then click <b>Save token</b>. It stays on this device.',
-        target: () => shown($('#lpSettings')), done: () => hasToken() && $('#lpSettings').hidden,
-        act: () => $('#lpToken').focus(), actLabel: 'Put my cursor there' }
-    );
-    const built = mem.prompt && !featureVal();
-    steps.push(
-      { say: built
-          ? `What should Claude build? Type it under <b>Feature</b>, or use the prompt we built together: “${esc(mem.prompt.feature)}”.`
-          : 'What should Claude build? Type it under <b>Feature</b>, like “Interactive skills radar chart”. Short and specific wins.',
-        target: () => $('#lpIdea'), next: 'Next', need: () => featureVal(), needSay: 'Type a feature first, then click <b>Next</b>.',
-        act: built ? () => fillPrompt(mem.prompt) : () => $('#lpIdea').focus(),
-        actLabel: built ? 'Use our prompt' : 'Put my cursor there', jump: () => launched() && 'track' },
-      { say: 'Who is it for, what must it show, what should it avoid? Add that under <b>Details</b>. Optional, but it’s where good prompts become great.',
-        target: () => $('#lpNotes'), next: 'Next', skip: 'Skip', jump: () => launched() && 'track' },
-      { say: () => `Ready! Click <b>Launch</b> and Claude builds “${esc(featureVal()) || 'your feature'}”, then publishes it to staging.`,
-        target: () => $('#lpGo'), done: () => launched(),
-        act: () => $('#lpForm').requestSubmit(), actLabel: 'Launch it for me' },
-      { id: 'track', say: 'Sent! Watch it here: first <b>Claude received the prompt</b>, then <b>Repo update complete</b>. Usually 5–15 minutes. It lands in the labs bank under <b>Prototypes</b>.',
-        target: () => shown($('#lpTrack')), next: 'Got it' }
-    );
-    return steps;
-  }
-
-  function weatherSteps() {
-    const temp = $('#wxBody .wx-temp'), cond = $('#wxBody .wx-cond');
-    if (!temp) return [
-      { say: 'This is the weather card. It didn’t load just now, probably the connection.', target: () => $('#weather'), next: 'Next' },
-      { say: 'Click <b>refresh</b> to try again. If you’re offline, it shows the last forecast it saw.', target: () => $('#wxRefresh'),
-        act: () => $('#wxRefresh').click(), actLabel: 'Refresh it for me', next: 'Got it' }
-    ];
-    const now = `${temp.textContent}${cond ? ' and ' + cond.textContent.toLowerCase() : ''}`;
-    return [
-      { say: `This is the weather for <b>${esc($('#wxPlace').textContent)}</b>. Right now it’s <b>${esc(now)}</b>.`, target: () => $('#wxBody .wx-now'), next: 'Next' },
-      { say: 'These three tell you how it actually feels outside: <b>Feels like</b>, <b>Humidity</b> and <b>Wind</b>.', target: () => $('#wxBody .wx-stats'), next: 'Next' },
-      { say: 'The next three days. The <b>blue %</b> is the chance of rain, and the bar shows each day’s low to high.', target: () => $('#wxBody .wx-days'), next: 'Next' },
-      { say: 'It refreshes by itself every 15 minutes. Click <b>refresh</b> to update it now.', target: () => $('#wxRefresh'),
-        act: () => $('#wxRefresh').click(), actLabel: 'Refresh it for me', next: 'Next' },
-      { say: 'Tip: for another city, add it to the link, like <b>?name=Miami&amp;lat=25.76&amp;lon=-80.19</b>.', target: () => $('#weather .wx-place'), next: 'Got it' }
-    ];
-  }
-
-  async function labsSteps() {
-    await waitFor(() => $('#plLive .pl-link') || ($('#plLive .pl-empty') && !/Loading/.test($('#plLive .pl-empty').textContent)), 4000);
-    const first = $('#plLive .pl-link');
-    const steps = [
-      { say: 'This is the <b>labs bank</b>: every prototype Claude has built and published to staging.', target: () => $('#prototypes'), next: 'Next' }
-    ];
-    if (!first) {
-      steps.push({ say: 'It’s empty right now. Launch a prototype and it shows up here with the time it was created.', target: () => $('#plLive'), next: 'Got it' });
-      return steps;
-    }
-    const url = first.href;
-    steps.push(
-      { say: `Newest first. Click <b>${esc($('.pl-title', first).textContent)}</b> to try it right here on the dashboard.`,
-        target: () => $('#plLive .pl-link'), done: () => $('#pvIframe').getAttribute('src') === url,
-        act: el => el.click(), actLabel: 'Open it for me' },
-      { say: 'It opens in the <b>Staging site</b> preview. Scroll and tap around inside, it’s the real thing.', target: () => $('#pvFrame'), next: 'Next' },
-      { say: '<b>Fit</b> shows it at this screen’s size. <b>Desktop</b> shows what a recruiter on a laptop sees. Try both.', target: () => $('#preview .pv-seg'), next: 'Next' },
-      { say: 'Switch between pages and prototypes here.', target: () => $('#pvPage'), next: 'Next' },
-      { say: 'Want it full screen? <b>Open in a new tab</b>.', target: () => $('#pvOpen'), next: 'Got it' }
-    );
-    return steps;
-  }
-
-  const TOURS = {
-    launch: { name: 'Launch a prototype', menu: 'Show me how to launch a prototype', steps: launchSteps },
-    weather: { name: 'Check the weather', menu: 'Show me the weather', steps: weatherSteps },
-    labs: { name: 'Explore the labs bank', menu: 'Show me the labs bank', steps: labsSteps }
-  };
-  const TOUR_ORDER = ['launch', 'labs', 'weather'];
-
-  async function runTour(key) {
-    const token = ++stepToken;
-    tour = key; talking = null; baseReq = latestReq();
-    ringOff(); gbub.hidden = true;
-    const steps = await TOURS[key].steps();
-    if (token !== stepToken) return;
-    for (let i = 0; i < steps.length; i++) {
-      const st = steps[i];
-      const el = await waitFor(st.target);
-      if (token !== stepToken) return;
-      if (!el) return guideMenu('Hmm, I lost track of that. What do you want to do?', true);
-      ringOff();
-      gbub.hidden = true;
-      if (!narrow()) await scrollWide(el);
-      if (token !== stepToken) return;
-      await goNear(el);
-      if (token !== stepToken) return;
-      ringOn(el);
-      let iv;
-      const text = typeof st.say === 'function' ? st.say() : st.say;
-      const head = `<span class="gstep">${esc(TOURS[key].name)} · ${i + 1} of ${steps.length}</span>`;
-      const outcome = await new Promise(resolve => {
-        const acts = [];
-        if (st.act) acts.push({ label: st.actLabel || 'Do it for me', pri: !st.next, fn: () => st.act(el) });
-        if (st.next) acts.push({ label: st.next, pri: true, fn: () => {
-          if (st.need && !st.need()) { say(head + forTouch(st.needSay), acts); return; }
-          resolve('next');
-        } });
-        if (st.skip) acts.push({ label: st.skip, fn: () => resolve('next') });
-        acts.push({ label: 'Stop', quiet: true, fn: () => resolve('stop') });
-        say(head + forTouch(text), acts);
-        if (narrow()) scrollNarrow(el);
-        iv = setInterval(() => {
-          if (token !== stepToken) return resolve('cancel');
-          let j = null; try { j = st.jump && st.jump(); } catch (e) {}
-          if (j) return resolve('jump:' + j);
-          let ok = false; try { ok = st.done && st.done(); } catch (e) {}
-          if (ok) resolve('done');
-        }, 200);
-      });
-      clearInterval(iv);
-      if (outcome === 'cancel' || token !== stepToken) return;
-      if (outcome === 'stop') return guideRest('Okay! Tap me any time you want a hand.');
-      ringOff(); cheer();
-      await sleep(outcome === 'done' ? 450 : 250);
-      if (token !== stepToken) return;
-      if (outcome.startsWith('jump:')) {
-        const to = steps.findIndex(s => s.id === outcome.slice(5));
-        if (to > i) i = to - 1;
-      }
-    }
-    markSeen('tours', key);
-    afterShow(key);
-  }
-
-  /* =====================================================================
-     TALKING: Paño knows a lot about what makes a prototype people want
-     to try. Each talk is a little script of yes/no and A/B/C questions.
-     ===================================================================== */
-  const AUD = {
-    recruiter: 'a recruiter skimming for 30 seconds, so lead with the biggest result',
-    manager: 'a hiring manager who wants depth, so show how I think and decide',
-    peer: 'fellow business analysts, so show the method and the tools'
-  };
-  const IDEAS = {
-    skills: { chart: 'Interactive skills radar chart', game: 'Guess-my-skill mini game', story: 'Skills growth timeline' },
-    project: { chart: 'Project impact dashboard', game: 'Fix-the-report puzzle game', story: 'Case study story timeline' },
-    process: { chart: 'How I work: process flow chart', game: 'Pick-the-next-step BA challenge', story: 'A week in my BA life timeline' }
-  };
-  const VIBE = { playful: 'Playful and colorful', clean: 'Clean and professional', bold: 'Bold, high-contrast' };
-  function composePrompt() {
-    const what = mem.what || 'skills', fmt = mem.format || 'chart';
-    const feature = IDEAS[what][fmt];
-    const details = [
-      `For ${AUD[mem.audience || 'recruiter']}.`,
-      `${VIBE[mem.vibe || 'clean']} look.`,
-      mem.length === 'long' ? 'About 2 minutes to explore, with depth for people who dig in.' : 'Takes about 30 seconds to get the point.',
-      mem.cta === false ? '' : 'End with a clear “Contact me” button.',
-      'Works great on phones and laptops. Real numbers, no filler text.'
-    ].filter(Boolean).join(' ');
-    return { feature, details };
-  }
+  // put a prompt he built into the launch card
   function fillPrompt(p) {
+    if (!p) return;
     $('#lpIdea').value = p.feature; $('#lpNotes').value = p.details;
     ['#lpIdea', '#lpNotes'].forEach(s => $(s).dispatchEvent(new Event('input', { bubbles: true })));
   }
 
-  // the end of a talk: Paño always has a next thing ready
-  const goTalk = k => () => runTalk(k);
-  const goTour = k => () => runTour(k);
-  function bridge(from, extra = []) {
-    // don't offer the same thing twice
-    const has = re => extra.some(a => re.test(a.label));
-    let t = nextTalk(from), s = nextTour();
-    if (t && has(new RegExp(TALKS[t].menu.replace(/^\w+ /, ''), 'i'))) t = null;
-    if (s && has(/^Show me/)) s = null;
-    return [
-      ...extra,
-      ...(s ? [{ label: TOURS[s].menu, pri: !extra.length, fn: goTour(s) }] : []),
-      ...(t ? [{ label: 'Talk: ' + TALKS[t].menu, fn: goTalk(t) }] : []),
-      { label: 'Other topics', fn: talkMenu },
-      { label: 'I’m good for now', quiet: true, fn: () => guideRest(pick(['Okay! Tap me any time.', 'I’ll be right here.', 'Go get ’em. Tap me if you need me.'])) }
-    ];
-  }
-
-  const TALKS = {
-    goodPrompt: { menu: 'What makes a good prompt', nodes: [
-      { say: 'Good prompts are short, specific and made for someone. Let me quiz you a little. Ready?', opts: [
-        { label: 'Ready', reply: 'Yay!' }, { label: 'Just tell me', reply: 'Fine, but the quiz is fun.' }] },
-      { say: 'Which feature name works better?', abc: true, opts: [
-        { label: '“Make my site better”', reply: 'Close! But Claude can’t guess what “better” means to you.' },
-        { label: '“Interactive skills radar chart”', reply: 'Exactly! Claude knows what to build.', good: true }] },
-      { say: '<b>Rule 1: one feature, one job.</b> Claude builds one page per prompt, so a focused idea comes out polished instead of crowded.', next: 'Makes sense' },
-      { say: 'Who should the prototype impress?', abc: true, opts: [
-        { label: 'Recruiters', set: { audience: 'recruiter' }, reply: 'Recruiters skim fast. Lead with the big number.' },
-        { label: 'Hiring managers', set: { audience: 'manager' }, reply: 'Hiring managers want to see how you think.' },
-        { label: 'Fellow BAs', set: { audience: 'peer' }, reply: 'Peers love seeing the method and the tools.' }] },
-      { say: '<b>Rule 2: write for that person.</b> Say who it’s for in Details, and Claude tunes the words and layout for them.', next: 'Got it' },
-      { say: 'Should visitors be able to click or play with it?', opts: [
-        { label: 'Yes', reply: 'Yes! People remember what they touched.', good: true },
-        { label: 'No', reply: 'Fair. Even a static page should <i>show</i>: visuals, numbers, results.' }] },
-      { say: '<b>Rule 3: show results, not duties.</b> “Cut 1,000+ reports to about 20” lands harder than “managed reporting”.', next: 'Ooh, nice' },
-      { say: 'Last one. Which detail is strongest?', abc: true, opts: [
-        { label: '“Use nice colors”', reply: 'Nice colors are good, but they don’t tell Claude what matters.' },
-        { label: '“Show my 3 biggest wins as before/after numbers”', reply: 'Perfect. Specific, visual and about results.', good: true },
-        { label: '“Make it pop”', reply: 'Ha. Pop how? Claude needs specifics.' }] },
-      { say: 'Recap: <b>one job, a clear audience, real results.</b> You’re ready to write a great one.', end: () => bridge('goodPrompt', [{ label: 'Build a prompt with me', pri: true, fn: goTalk('builder') }]) }
-    ] },
-
-    builder: { menu: 'Build a prompt with me', nodes: [
-      { say: 'Let’s build a prototype prompt together. I ask, you tap, and I write it. Takes a minute.', next: 'Let’s go' },
-      { say: 'What should it show off?', abc: true, opts: [
-        { label: 'Skills', set: { what: 'skills' }, reply: 'Skills it is.' },
-        { label: 'A project', set: { what: 'project' }, reply: 'A project. Stories sell.' },
-        { label: 'How I work', set: { what: 'process' }, reply: 'Ooh, the process. Underrated.' }] },
-      { say: 'What kind of thing should it be?', abc: true, opts: [
-        { label: 'A chart or visual', set: { format: 'chart' }, reply: 'Visual. Easy to skim.' },
-        { label: 'A mini game or quiz', set: { format: 'game' }, reply: 'A game! My favorite.', good: true },
-        { label: 'A story or timeline', set: { format: 'story' }, reply: 'A story. People remember those.' }] },
-      { say: 'Who is it for?', abc: true, opts: [
-        { label: 'Recruiters', set: { audience: 'recruiter' }, reply: 'Then we keep it quick.' },
-        { label: 'Hiring managers', set: { audience: 'manager' }, reply: 'Then we add depth.' },
-        { label: 'Fellow BAs', set: { audience: 'peer' }, reply: 'Then we show the method.' }] },
-      { say: 'What vibe?', abc: true, opts: [
-        { label: 'Playful', set: { vibe: 'playful' } }, { label: 'Clean and professional', set: { vibe: 'clean' } }, { label: 'Bold', set: { vibe: 'bold' } }] },
-      { say: 'Should it end with a “Contact me” button?', opts: [
-        { label: 'Yes', set: { cta: true }, reply: 'Smart. Always give them a next step.', good: true },
-        { label: 'No', set: { cta: false }, reply: 'Okay, no button.' }] },
-      { say: 'How long should it take to explore?', abc: true, opts: [
-        { label: 'About 30 seconds', set: { length: 'short' } }, { label: 'About 2 minutes', set: { length: 'long' } }] },
-      { say: () => { const p = composePrompt(); mem.prompt = p; saveMem();
-          return `Here’s your prompt:<span class="gquote"><b>Feature:</b> ${esc(p.feature)}<br><b>Details:</b> ${esc(p.details)}</span>`; }, next: 'Love it' },
-      { say: 'I saved it for you. Want me to show you how to launch it? It’s a quick little movie.', end: () => bridge('builder', [
-        { label: 'Show me how to launch it', pri: true, fn: () => { fillPrompt(mem.prompt); runTour('launch'); } },
-        { label: 'Just fill it in', fn: () => { fillPrompt(mem.prompt); guideRest('Done! It’s in the launch card.'); } },
-        { label: 'Start over', fn: goTalk('builder') }]) }
-    ] },
-
-    details: { menu: 'What to put in Details', nodes: [
-      { say: '<b>Details</b> is the box under Feature. It’s where good prompts become great ones.', next: 'Tell me more' },
-      { say: 'Quick check: is Details required?', opts: [
-        { label: 'Yes', reply: 'Nope, it’s optional. But it really helps.' },
-        { label: 'No', reply: 'Right! Optional, but powerful.', good: true }] },
-      { say: 'Think of it as notes for a designer: <b>who it’s for, what must be there, what to avoid.</b>', next: 'Okay' },
-      { say: 'Which one belongs in Details?', abc: true, opts: [
-        { label: '“Mobile friendly, readable in 30 seconds”', reply: 'Yes! Clear and checkable.', good: true },
-        { label: '“pls”', reply: 'Polite, but Claude needs more to go on.' },
-        { label: '“Do the thing from before”', reply: 'Claude can’t see “before”. Only what’s in the box.' }] },
-      { say: 'Name the real stuff: <b>tools, numbers, project names.</b> Claude can’t read your mind, only the box.', next: 'Makes sense' },
-      { say: 'Should you paste your whole résumé in?', opts: [
-        { label: 'Yes', reply: 'Too much! Pick the 2 or 3 facts this feature needs.' },
-        { label: 'No', reply: 'Right. Pick the 2 or 3 facts this feature needs.', good: true }] },
-      { say: 'Say what to avoid too: “no stock photos”, “keep it to one screen”, “no jargon”.', next: 'Good tip' },
-      { say: 'How much fits in Details?', abc: true, opts: [
-        { label: 'About 60 characters', reply: 'More than that! About 600.' },
-        { label: 'About 600 characters', reply: 'Yep, about 600. A short paragraph.', good: true },
-        { label: 'Unlimited', reply: 'It stops at about 600. Short and sharp is better anyway.' }] },
-      { say: 'Recap: <b>who, must-haves, avoid, real facts.</b> That’s a great Details box.', end: () => bridge('details') }
-    ] },
-
-    pipeline: { menu: 'How launching works', nodes: [
-      { say: 'Want to know what happens after you click Launch? It’s a little relay race.', next: 'Tell me' },
-      { say: '<b>Leg 1:</b> the dashboard asks GitHub to run the launcher, using your token.', next: 'Next' },
-      { say: 'Where is your token saved?', abc: true, opts: [
-        { label: 'In the repo', reply: 'Never! It stays out of the code.' },
-        { label: 'On this device only', reply: 'Right. Only this browser has it.', good: true },
-        { label: 'Emailed to Phill', reply: 'Nope! It never leaves this browser except to talk to GitHub.' }] },
-      { say: '<b>Leg 2:</b> the launcher hands your prompt to Claude, and the tracker ticks <b>Claude received the prompt</b>.', next: 'Next' },
-      { say: '<b>Leg 3:</b> Claude builds the page and publishes it to staging. Usually 5 to 15 minutes.', next: 'Next' },
-      { say: 'Do you know what staging is?', opts: [
-        { label: 'Yes', reply: 'Nice. Then you know it’s safe to experiment.', good: true },
-        { label: 'No', reply: 'It’s a practice copy of Phill’s site. Try anything, the real site doesn’t change.' }] },
-      { say: '<b>Leg 4:</b> it lands in the labs bank under <b>Prototypes</b>, stamped with when it was created.', next: 'Cool' },
-      { say: 'If it’s taking a while, should you launch it again?', opts: [
-        { label: 'Yes', reply: 'Hold on! The tracker keeps checking for you, and tells you if it fails.' },
-        { label: 'No', reply: 'Right. Patience. The tracker keeps checking for you.', good: true }] },
-      { say: 'That’s the race: <b>dashboard, GitHub, Claude, staging, labs bank.</b>', end: () => bridge('pipeline') }
-    ] },
-
-    feedback: { menu: 'Testing what you built', nodes: [
-      { say: 'Once it’s live comes the fun part: trying it out.', next: 'Okay' },
-      { say: 'Click it in the labs bank and it opens in the <b>Staging site</b> preview, right on the dashboard.', next: 'Next' },
-      { say: 'Recruiters mostly look at portfolios on…', abc: true, opts: [
-        { label: 'Phones', reply: 'Lots do, but not all.' }, { label: 'Laptops', reply: 'Lots do, but not all.' },
-        { label: 'Both', reply: 'Both! So check both.', good: true }] },
-      { say: 'Use <b>Fit</b> for this screen’s size and <b>Desktop</b> for the laptop view.', next: 'Next' },
-      { say: 'Something’s off. What’s the best next prompt?', abc: true, opts: [
-        { label: '“Fix it”', reply: 'Fix what? Claude needs to know.' },
-        { label: '“Skills radar: bigger labels, add a contact button”', reply: 'Yes! Name it, then name the change.', good: true },
-        { label: 'Launch the same prompt again', reply: 'Same prompt, similar result. Say what to change.' }] },
-      { say: 'Small, specific tweaks win. One change list per prompt.', next: 'Got it' },
-      { say: 'Should you show it to a friend before sharing it?', opts: [
-        { label: 'Yes', reply: 'Love it. Fresh eyes catch the confusing bits.', good: true },
-        { label: 'No', reply: 'Even a 10-second “what is this?” test helps. Try it!' }] },
-      { say: 'Ask them three things: <b>What is it? What’s the best part? What would you click next?</b>', next: 'Great questions' },
-      { say: 'Try, test, tweak. That’s how good prototypes become great ones.', end: () => bridge('feedback', [{ label: 'Show me the labs bank', pri: true, fn: goTour('labs') }]) }
-    ] },
-
-    /* little chats Paño starts at random times */
-    day: { small: true, teaser: 'Hey! How’s your day going?', nodes: [
-      { say: 'How’s your day going?', abc: true, opts: [
-        { label: 'Great', set: { mood: 'great' }, reply: 'Love that!', good: true },
-        { label: 'Okay', set: { mood: 'okay' }, reply: 'Okay is good. Let’s make it better.' },
-        { label: 'Rough', set: { mood: 'rough' }, reply: 'Sorry. Want a tiny win? Building something helps.' }] },
-      { say: 'Want to make something?', end: () => bridge('day', [{ label: 'Build a prompt with me', pri: true, fn: goTalk('builder') }]) }
-    ] },
-    before: { small: true, teaser: 'Can I ask you something?', nodes: [
-      { say: 'Have you launched a prototype before?', opts: [
-        { label: 'Yes', set: { launchedBefore: true }, reply: 'A pro! Want tips to make the next one even better?' },
-        { label: 'No', set: { launchedBefore: false }, reply: 'Then I have a little movie for you.' }] },
-      { say: 'What sounds good?', end: () => mem.launchedBefore
-        ? bridge('before', [{ label: 'Talk: what to put in Details', pri: true, fn: goTalk('details') }])
-        : bridge('before', [{ label: 'Show me how to launch', pri: true, fn: goTour('launch') }]) }
-    ] },
-    sunny: { small: true, teaser: 'Psst. Quick weather question.', nodes: [
-      { say: 'Is it sunny where you are?', abc: true, opts: [
-        { label: 'Yes', reply: 'Lucky! I’m a cat, I love a sunbeam.' }, { label: 'No', reply: 'Aw. Let’s check the forecast.' },
-        { label: 'Not sure', reply: 'I can show you!' }] },
-      { say: 'The weather card has the whole forecast.', end: () => bridge('sunny', [{ label: 'Show me the weather', pri: true, fn: goTour('weather') }]) }
-    ] },
-    magic: { small: true, teaser: 'I have a fun question for you.', nodes: [
-      { say: 'If Phill’s portfolio could do one magic trick, what would it be?', abc: true, opts: [
-        { label: 'Show skills as a chart', set: { what: 'skills', format: 'chart' }, reply: 'Charts are magic for skimmers.' },
-        { label: 'Be a mini game', set: { what: 'project', format: 'game' }, reply: 'A game! Recruiters would remember that.', good: true },
-        { label: 'Tell his story', set: { what: 'process', format: 'story' }, reply: 'Stories stick.' }] },
-      { say: 'That could be a real prototype. Want to build the prompt?', end: () => bridge('magic', [{ label: 'Yes, build it with me', pri: true, fn: goTalk('builder') }]) }
-    ] },
-    snack: { small: true, teaser: 'Very important question…', nodes: [
-      { say: 'Coffee, tea, or catnip?', abc: true, opts: [
-        { label: 'Coffee', reply: 'Fuel for big ideas.' }, { label: 'Tea', reply: 'Calm and focused. Nice.' },
-        { label: 'Catnip', reply: 'A cat of culture!', good: true }] },
-      { say: 'Now that we’re refreshed…', end: () => bridge('snack') }
-    ] }
-  };
-  const TALK_ORDER = ['goodPrompt', 'builder', 'details', 'pipeline', 'feedback'];
-  const SMALL = ['day', 'before', 'magic', 'sunny', 'snack'];
-  const nextTalk = from => TALK_ORDER.find(k => k !== from && !seen.talks.includes(k)) || null;
-  const nextTour = () => TOUR_ORDER.find(k => !seen.tours.includes(k)) || null;
-
-  function runTalk(key, prefix = '') {
-    const T = TALKS[key], token = ++stepToken;
-    tour = null; talking = key; ringOff();
-    const total = T.nodes.length;
-    const show = async (i, pre, first) => {
-      if (token !== stepToken) return;
-      const n = T.nodes[i];
-      if (first) { gbub.hidden = true; await moveCat(homeSpot(), false); if (token !== stepToken) return; }
-      const text = typeof n.say === 'function' ? n.say() : n.say;
-      const head = T.small ? '<span class="gname">Paño</span>' : `<span class="gstep">Talking · ${i + 1} of ${total}</span>`;
-      const body = (pre ? `<span class="gre">${pre}</span>` : '') + text;
-      let acts;
-      if (n.end) {
-        if (!T.small) markSeen('talks', key);
-        acts = n.end();
-      } else if (n.opts) {
-        acts = n.opts.map((o, j) => ({ label: (n.abc ? 'ABC'[j] + ' · ' : '') + o.label.replace(/<[^>]+>/g, ''), fn: () => {
-          if (token !== stepToken) return;
-          if (o.set) { Object.assign(mem, o.set); saveMem(); }
-          if (o.good) cheer();
-          show(i + 1, o.reply || '');
-        } }));
-      } else acts = [{ label: n.next || 'Next', pri: true, fn: () => show(i + 1, '') }];
-      if (!n.end) acts.push({ label: 'Stop', quiet: true, fn: () => guideRest('Okay! Tap me any time you want to talk.') });
-      say(head + body, acts);
-    };
-    show(0, prefix, true);
-  }
-
-  function talkMenu() {
-    const token = ++stepToken;
-    tour = null; talking = 'menu'; ringOff();
-    moveCat(homeSpot(), false).then(() => {
-      if (token !== stepToken) return;
-      say(`<span class="gname">Paño</span>${pick(['What should we talk about?', 'Pick a topic. I know a lot about good prompts.', 'Ooh, a chat! Pick one.'])}`, [
-        ...TALK_ORDER.map(k => ({ label: (seen.talks.includes(k) ? '✓ ' : '') + TALKS[k].menu, fn: goTalk(k) })),
-        { label: 'Surprise me', fn: () => runTalk(pick(TALK_ORDER.filter(k => !seen.talks.includes(k)).concat(seen.talks.length === TALK_ORDER.length ? TALK_ORDER : []))) },
-        { label: 'Back', quiet: true, fn: () => guideMenu('What do you want to do?') }
-      ]);
-    });
-  }
-
-  // after a tutorial: celebrate, then tempt them into the next one
-  function afterShow(key) {
-    const n = seen.tours.length, s = nextTour(), t = nextTalk();
-    const lead = pick(['That’s a wrap!', 'And scene!', 'Ta-da!']) + ` You’ve watched <b>${n} of ${TOUR_ORDER.length}</b> little movies.`;
-    const tease = s ? ` Next up: <b>${TOURS[s].name.toLowerCase()}</b>. Want to watch?`
-      : t ? ` You’ve seen them all! Want to chat about <b>${TALKS[t].menu.toLowerCase()}</b>?` : ' You’ve seen everything. You’re a Paño pro.';
-    const token = ++stepToken;
-    tour = null; talking = null; ringOff(); gbub.hidden = true;
-    moveCat(homeSpot(), false).then(() => {
-      if (token !== stepToken) return;
-      say(`<span class="gname">Paño</span>${lead}${tease}`, [
-        ...(s ? [{ label: TOURS[s].menu, pri: true, fn: goTour(s) }] : []),
-        ...(key === 'launch' && !seen.talks.includes('feedback') ? [{ label: 'Talk: testing what you built', fn: goTalk('feedback') }] :
-            t ? [{ label: 'Talk: ' + TALKS[t].menu, pri: !s, fn: goTalk(t) }] : []),
-        { label: 'Back to the menu', fn: () => guideMenu('What do you want to do?') },
-        { label: 'I’m good', quiet: true, fn: () => guideRest('Okay! Tap me any time.') }
-      ]);
-    });
-  }
-
-  function hello() {
-    const h = new Date().getHours();
-    const tod = h < 12 ? 'Good morning!' : h < 18 ? 'Good afternoon!' : 'Good evening!';
-    if (mem.mood === 'rough') return `${tod} Hope today’s kinder than last time.`;
-    return pick([`${tod} I’m Paño.`, 'Hi, I’m Paño!', `${tod} Paño here.`]);
-  }
-
-  async function guideMenu(text, again) {
-    const token = ++stepToken;
-    tour = null; talking = null; ringOff();
-    gbub.hidden = true;
-    await moveCat(homeSpot(), false);
-    if (token !== stepToken) return;
-    const intro = seen.tours.length ? '' : ' <span class="gre">Tutorials are like little movies: watch one whenever you like, stop any time.</span>';
-    say(`<span class="gname">Paño</span>${text}${intro}`, [
-      ...TOUR_ORDER.map(k => ({ label: (seen.tours.includes(k) ? '✓ ' : '') + TOURS[k].menu, pri: k === nextTour(), fn: goTour(k) })),
-      { label: 'Talk to Paño', fn: talkMenu },
-      ...(hasBrain() ? [{ label: 'Ask about Phill', fn: phillMenu }] : []),
-      { label: panoKey() ? 'Paño’s brain' : 'Give Paño a brain', quiet: true, fn: () => panoKey() ? brainMenu() : askForKey('') },
-      { label: again ? 'I’m good, thanks' : 'Just looking around', quiet: true, fn: () => guideRest('Okay! Tap me any time you want a hand.') }
-    ]);
-  }
-  async function guideRest(msg) {
-    const token = ++stepToken;
-    tour = null; talking = null; ringOff();
-    gbub.hidden = true;
-    await moveCat(homeSpot(), false);
-    if (token !== stepToken || !msg) return;
-    say(msg);
-    const mine = msgSeq;
-    setTimeout(() => { if (mine === msgSeq) hideBubble(); }, 4000);
-  }
-
-  /* ---------- Paño starts little chats at random times ---------- */
-  let chats = 0, lastAct = Date.now(), chatT = 0;
-  const askedSmall = [];
-  ['pointerdown', 'keydown', 'scroll', 'input'].forEach(ev => addEventListener(ev, () => { lastAct = Date.now(); }, { passive: true, capture: true }));
-  const typing = () => { const a = document.activeElement; return a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName); };
-  const MAX_CHATS = 3;
-  function scheduleChat(min = 45, max = 120) { clearTimeout(chatT); chatT = setTimeout(tryChat, (min + Math.random() * (max - min)) * 1000); }
-  function tryChat() {
-    if (chats >= MAX_CHATS || gcat.hidden) return;
-    if (tour || talking || !gbub.hidden || document.hidden || typing() || Date.now() - lastAct < 6000) return scheduleChat(15, 30);
-    const left = SMALL.filter(k => !askedSmall.includes(k) && !(k === 'before' && 'launchedBefore' in mem));
-    if (!left.length) return;
-    const key = pick(left); askedSmall.push(key); chats++;
-    cheer();
-    say(`<span class="gname">Paño</span>${TALKS[key].teaser}`, [
-      { label: 'Talk to Paño', pri: true, fn: () => runTalk(key) },
-      { label: 'Not now', quiet: true, fn: () => guideRest() }
-    ]);
-    const mine = msgSeq;
-    setTimeout(() => { if (mine === msgSeq && !tour && !talking) hideBubble(); }, 15000);
-    scheduleChat(90, 200);
-  }
-
-  // when idle, Paño fidgets: a stretch, a look around
-  function fidget() {
-    setTimeout(fidget, 14000 + Math.random() * 16000);
-    if (reduce || gcat.hidden || tour || gcat.classList.contains('walking')) return;
-    const moves = [
-      [{ transform: 'none' }, { transform: 'scale(1.06,.9)', offset: .3 }, { transform: 'scale(.96,1.08)', offset: .6 }, { transform: 'none' }],
-      [{ transform: 'none' }, { transform: 'rotate(-5deg)', offset: .3 }, { transform: 'rotate(5deg)', offset: .7 }, { transform: 'none' }],
-      [{ transform: 'none' }, { transform: 'translateY(-10px)', offset: .4 }, { transform: 'none' }]
-    ];
-    gbodyEl.animate(pick(moves), { duration: 900, easing: 'ease-in-out' });
-  }
-
-  /* ---------- head mode ---------- */
-  function enterHead(pop) {
-    if (headMode) return;
-    headMode = true; headHome = true;
-    try { sessionStorage.setItem('panoHead', '1'); } catch (e) {}
-    ringOff(); hideBubble();
-    gcat.classList.add('head'); gsvg.setAttribute('viewBox', HEAD_VB); gsvg.classList.remove('flip');
-    setCat(headSpot());
-    if (pop && !reduce) gbodyEl.animate([{ transform: 'scale(.3)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: SPRING_WIN.duration, easing: SPRING_WIN.easing });
-  }
-  function exitHead() {
-    if (!headMode) return;
-    const h = catPos; headMode = false;
-    gcat.classList.remove('head'); gsvg.setAttribute('viewBox', FULL_VB);
-    setCat(clampSpot({ x: h.x + HEAD_W() / 2 - CAT_W() / 2, y: h.y }, CAT_W(), CAT_H()));
-  }
-  async function goHead() {
-    if (headMode) return;
-    const token = ++stepToken;
-    tour = null; talking = null; ringOff(); hideBubble();
-    await moveCat(headWalkSpot(), false);
-    if (token !== stepToken) return;
-    enterHead(true);
-  }
-  // where the full cat walks to before he turns into just his head
-  function headWalkSpot() {
-    const h = headSpot();
-    return clampSpot({ x: h.x + HEAD_W() / 2 - CAT_W() / 2, y: Math.max(8, h.y) }, CAT_W(), CAT_H());
-  }
-
-  /* ---------- after the user has played with him, quiet time sends him to his head spot ---------- */
-  // he waits a full 10s after the last thing the user did before he sets off.
-  // while he's showing something (a tutorial, a talk, a story, a question with buttons) he waits 20s,
-  // so there's time to read the bubble before he walks away.
-  const IDLE_MS = 10000, SHOWING_IDLE_MS = 20000;
-  const showingSomething = () => !gbub.hidden && (!!tour || !!talking || gacts.children.length > 0);
-  function touchPano() { hasInteracted = true; armIdle(); }
-  function armIdle() {
-    clearTimeout(idleT);
-    if (!hasInteracted || headMode) return;
-    idleT = setTimeout(() => {
-      if (headMode) return;
-      // never walk off mid-drag, mid-thought, or while the user is typing to him
-      if (dragging || thinking || (gbub.contains(document.activeElement) && document.activeElement.tagName === 'INPUT')) return armIdle();
-      goHead();
-    }, showingSomething() ? SHOWING_IDLE_MS : IDLE_MS);
-  }
-  // anything the user does on the page counts as activity and restarts the 10 seconds
-  ['pointerdown', 'keydown', 'input', 'wheel', 'touchmove'].forEach(ev => addEventListener(ev, () => { if (hasInteracted && !headMode) armIdle(); }, { passive: true, capture: true }));
-  gbub.addEventListener('pointerdown', touchPano);
-  gbub.addEventListener('input', touchPano);
-
-  /* ---------- drag him anywhere; a tap still opens his menu ---------- */
-  let drag = null, suppressClick = false;
-  gcat.addEventListener('pointerdown', e => {
-    if (e.button > 0) return;
-    touchPano();
-    const r = gcat.getBoundingClientRect();
-    drag = { id: e.pointerId, sx: e.clientX, sy: e.clientY, ox: r.left, oy: r.top, moved: false };
-    try { gcat.setPointerCapture(e.pointerId); } catch (err) {}
-  });
-  gcat.addEventListener('pointermove', e => {
-    if (!drag || e.pointerId !== drag.id) return;
-    const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
-    if (!drag.moved && Math.hypot(dx, dy) < 6) return;
-    if (!drag.moved) {
-      drag.moved = true; dragging = true;
-      gcat.getAnimations().forEach(a => a.cancel());
-      gcat.classList.remove('walking'); gcat.classList.add('dragging');
-    }
-    const w = headMode ? HEAD_W() : CAT_W(), h = headMode ? HEAD_H() : CAT_H();
-    setCat(clampSpot({ x: drag.ox + dx, y: drag.oy + dy }, w, h));
-    placeBubble();
-  });
-  function endDrag(e) {
-    if (!drag || e.pointerId !== drag.id) return;
-    if (drag.moved) {
-      suppressClick = true;
-      gcat.classList.remove('dragging');
-      if (headMode) {
-        headPos = { fx: (catPos.x + HEAD_W() / 2) / innerWidth, y: catPos.y };
-        try { sessionStorage.setItem('panoHeadPos', JSON.stringify(headPos)); } catch (err) {}
-      }
-      setTimeout(() => { suppressClick = false; }, 0);
-    }
-    dragging = false; drag = null; armIdle();
-  }
-  gcat.addEventListener('pointerup', endDrag);
-  gcat.addEventListener('pointercancel', endDrag);
-
-  gcat.addEventListener('click', () => {
-    if (suppressClick) return;
-    if (!headMode && !gbub.hidden && !tour) guideRest();
-    else guideMenu(pick(['What do you want to do?', 'Hi again! What should we do?', 'Need a hand? Pick one.']));
-  });
-
-  /* =====================================================================
-     TYPING TO PAÑO. He answers from his own script whenever he can.
-     Only a question he can't place goes to Claude, which must reply in
-     his voice in a few words and pick one of the things he already does.
-     The key lives on this device only, like the GitHub token.
-     ===================================================================== */
-  const KEY_KEY = 'dev-pd-pano-key', ASK_CAP = 20;
-  let memKey = '';                                   // survives even if this browser won't save
-  const panoKey = () => memKey || store.get(KEY_KEY, '');
-  const gask = $('#gask'), gaskIn = $('#gaskIn'), gkey = $('#gkey'), gkeyIn = $('#gkeyIn');
-  let asks = 0, chatLog = [], thinking = false;
-
-  // where a reply can send you. Same names Claude is allowed to choose.
-  const GO = {
-    'tour:launch': { label: 'Show me how to launch a prototype', fn: () => runTour('launch') },
-    'tour:weather': { label: 'Show me the weather', fn: () => runTour('weather') },
-    'tour:labs': { label: 'Show me the labs bank', fn: () => runTour('labs') },
-    'talk:goodPrompt': { label: 'Talk: what makes a good prompt', fn: () => runTalk('goodPrompt') },
-    'talk:builder': { label: 'Build a prompt with me', fn: () => runTalk('builder') },
-    'talk:details': { label: 'Talk: what to put in Details', fn: () => runTalk('details') },
-    'talk:pipeline': { label: 'Talk: how launching works', fn: () => runTalk('pipeline') },
-    'talk:feedback': { label: 'Talk: testing what you built', fn: () => runTalk('feedback') },
-    'menu': { label: 'Show me the menu', fn: () => guideMenu('What do you want to do?') }
+  // ---- how to read his tours. The tours themselves (his words, what he points at) are in his brain.
+  //      These answer the parts only this page can: is a token saved, has the weather loaded, and so on.
+  const tours = {
+    when: {
+      no_token: () => !hasToken(),
+      built_prompt: p => !!p.mem.prompt && !featureVal(),
+      launched: () => launched(),
+      weather_loaded: () => !!$('#wxBody .wx-temp'),
+      labs_loaded: () => !!($('#plLive .pl-link') || ($('#plLive .pl-empty') && !/Loading/.test($('#plLive .pl-empty').textContent))),
+      labs_any: () => !!$('#plLive .pl-link')
+    },
+    done: {
+      token_step: v => v === 'open' ? (!$('#lpSettings').hidden || hasToken()) : (hasToken() && $('#lpSettings').hidden),
+      launched: () => launched(),
+      previewing: sel => { const a = $(sel); return !!a && $('#pvIframe').getAttribute('src') === a.href; }
+    },
+    act: {
+      use_prompt: (v, el, step, p) => fillPrompt(p.mem.prompt)
+    },
+    values: {
+      built_feature: p => p.mem.prompt.feature,
+      feature: () => featureVal(),
+      place: () => $('#wxPlace').textContent,
+      now: () => { const t = $('#wxBody .wx-temp'), c = $('#wxBody .wx-cond'); return t.textContent + (c ? ' and ' + c.textContent.toLowerCase() : ''); },
+      first_title: () => $('.pl-title', $('#plLive .pl-link')).textContent
+    },
+    begin: () => { baseReq = latestReq(); }
   };
 
-  /* ---------- Paño's own answers. These never reach Claude. ---------- */
-  const SCRIPTED = [
-    [/^\s*(hi|hey+|hello|yo|sup|howdy|hiya|good (morning|afternoon|evening))\b/i, () => ({ reply: pick(['Hey you!', 'Hi! Purring already.', 'Hello!']), go: 'menu' })],
-    [/\b(thanks|thank you|ty|cheers|appreciate)\b/i, () => ({ reply: pick(['Any time.', 'That’s what I’m here for.', 'Mrrp. Happy to help.']), go: 'menu' })],
-    [/\b(how are you|how’s it going|hows it going|you ok|how you doing)\b/i, () => ({ reply: 'Warm spot, full bowl, good company. Can’t complain.', go: 'menu' })],
-    [/\b(who are you|what are you|are you a (cat|bot|robot))\b/i, () => ({ reply: 'I’m Paño, Phill’s cat. I show people around this dashboard, and I know all about Phill’s work.', go: 'menu' })],
-    [/\b(help|what can you do|what do you do|options|menu|show me everything|lost)\b/i, () => ({ reply: 'I can show you around, chat about good prototypes, and tell you all about Phill and the cats.', go: 'menu' })],
-    [/\b(weather|forecast|rain|temperature|how (hot|cold)|umbrella|sunny)\b/i, () => ({ reply: 'The weather card has all that. Want the tour?', go: 'tour:weather' })],
-    [/\b(labs|labs bank|staging|preview|what (have|did) (i|we|you) (built|made)|see (my|the) prototypes)\b/i, () => ({ reply: 'Everything you’ve built lives in the labs bank.', go: 'tour:labs' })],
-    [/\b(launch|deploy|ship|start a (prototype|build)|new prototype|make something|build something)\b/i, () => ({ reply: 'Ooh, building something! Let’s do it.', go: 'tour:launch' })],
-    [/\b(details box|what (do|should) i (put|write) in details|details field)\b/i, () => ({ reply: 'Details is where good prompts turn great. Let’s talk it through.', go: 'talk:details' })],
-    [/\b(good prompt|better prompt|how (do|should) i (write|word)|what (do|should) i (ask|say)|wording|phrase)\b/i, () => ({ reply: 'Good prompts do one job, for one person, with real results.', go: 'talk:goodPrompt' })],
-    [/\b(how (does|do) (it|this|launching) work|behind the scenes|pipeline|what happens (when|after)|how long does)\b/i, () => ({ reply: 'It’s a little relay race. Want me to walk the legs?', go: 'talk:pipeline' })],
-    [/\b(test|testing|check it|feedback|does it look|on (my )?phone|mobile|tweak|fix it)\b/i, () => ({ reply: 'Testing is the fun part. Let’s go through it.', go: 'talk:feedback' })],
-    [/\b(idea|ideas|stuck|don’t know what|dont know what|inspire|suggest something|what should i build)\b/i, () => ({ reply: 'Let’s build a prompt together. I ask, you tap, I write it.', go: 'talk:builder' })],
-    [/^\s*(no|nope|nah|bye|later|nothing|nvm|never mind|stop|quit)\s*[.!]?\s*$/i, () => ({ reply: '', go: 'rest' })]
-  ];
-  function scripted(text) {
-    for (const [re, fn] of SCRIPTED) if (re.test(text)) return fn();
-    return null;
-  }
-
-
-  /* =====================================================================
-     PAÑO'S BRAIN: what he knows about Phill, the portfolio, and Corner
-     and Panela. It lives in the portfolio repo (pano-brain/*.json) and is
-     served from the staging site, so both sites share one brain. The last
-     good copy is kept on this device, so he still knows things offline.
-     ===================================================================== */
-  const PORTFOLIO = 'https://marquisphill.github.io/Professional-Portfolio2-STAGING/';
-  const BRAIN_URL = window.PANO_BRAIN || (PORTFOLIO + 'pano-brain/');
-  const BRAIN_KEY = 'dev-pd-pano-brain';
-  let brain = store.get(BRAIN_KEY, null);
-  const TOPICS = {};
-  function indexBrain() {
-    for (const k in TOPICS) delete TOPICS[k];
-    if (!brain) return;
-    // ids never collide, but if they ever do: dashboard beats core beats portfolio
-    [['portfolio', brain.portfolio], ['core', brain.core], ['dashboard', brain.dashboard]].forEach(([from, f]) =>
-      ((f && f.talk_topics) || []).forEach(t => {
-        if (t && t.id && t.status !== 'draft' && Array.isArray(t.script) && t.script.length) TOPICS[t.id] = Object.assign({ from }, t);
-      }));
-  }
-  indexBrain();
-  (async () => {
-    try {
-      const get = n => fetch(BRAIN_URL + n + '.json', { cache: 'no-cache' }).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
-      const [core, dashboard, portfolio] = await Promise.all(['core', 'dashboard', 'portfolio'].map(get));
-      brain = { core, dashboard, portfolio };
-      store.set(BRAIN_KEY, brain);
-      indexBrain();
-    } catch (e) { try { console.warn('[Paño] couldn’t load his brain, using the last copy —', e.message || e); } catch (_) {} }
-  })();
-  const hasBrain = () => Object.keys(TOPICS).length > 0;
-
-  // match what you typed against each topic's trigger phrases; the longest phrase wins
-  const norm = t => ' ' + String(t).toLowerCase().replace(/[’‘]/g, "'").replace(/ñ/g, 'n').replace(/[^a-z0-9',.&+-]+/g, ' ').replace(/[,.]+(\s|$)/g, ' ') + ' ';
-  function matchTopic(text) {
-    const said = norm(text);
-    let best = null, len = 0;
-    for (const id in TOPICS) for (const tr of TOPICS[id].triggers || []) {
-      const t = norm(tr).trim();
-      if (t.length > len && said.includes(' ' + t + ' ')) { best = id; len = t.length; }
-    }
-    return best;
-  }
-
-  // scripts may only use <b>
-  const safeHtml = s => esc(s).replace(/&lt;(\/?)b&gt;/g, '<$1b>');
-
-  // portfolio show targets → a page in the Staging site card (the portfolio opens these windows from #links)
+  // ---- showing something that lives on the portfolio: pull it up in the Staging site card.
+  //      target is '' for the home page, or a portfolio thing ('doc:reports', 'tour:skills', ...).
   function portfolioHash(t) {
     if (/resume/.test(t)) return '#resume';
     if (/contact|availability/.test(t)) return '#contact';
@@ -1870,370 +960,32 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
     if (/projects|reports|logicbroker|brdskill|hackathon|process/.test(t)) return '#projects';
     return '';
   }
-  function showFor(T) {
-    let s = T.show;
-    if (s && typeof s === 'object') s = s.dashboard || (s.portfolio ? 'portfolio:' + s.portfolio : null);
-    else if (s && T.from === 'portfolio') s = 'portfolio:' + s;
-    if (!s) return null;
-    const DASH = { 'tour:launch': 'launch', 'tour:weather': 'weather', 'tour:prototypes': 'labs', 'tour:preview': 'labs' };
-    if (DASH[s]) return { label: TOURS[DASH[s]].menu, fn: goTour(DASH[s]) };
-    if (s === 'preview:home') return { label: 'Show me the portfolio', fn: () => openPortfolio('') };
-    if (s.startsWith('portfolio:')) return { label: 'See it on the portfolio', fn: () => openPortfolio(portfolioHash(s.slice(10))) };
-    return null;
-  }
-  function openPortfolio(hash) {
-    if (window.pdPreview) window.pdPreview(PORTFOLIO + hash);
-    else window.open(PORTFOLIO + hash, '_blank', 'noopener');
-    const fb = brain && brain.dashboard && brain.dashboard.show_fallback;
-    guideRest((fb && fb.say) || 'That lives on Phill’s portfolio. I pulled it up in the preview.');
+  function openPortfolio(target) {
+    const url = PORTFOLIO + (target ? portfolioHash(target) : '');
+    if (window.pdPreview) window.pdPreview(url);
+    else window.open(url, '_blank', 'noopener');
   }
 
-  const CAT_TOPICS = () => ((brain && brain.dashboard && brain.dashboard.cat_preference) || {}).favorite_topics || [];
-  const goTopic = id => () => runTopic(id);
-  function topicEnd(T) {
-    const acts = [], sh = showFor(T);
-    if (sh) acts.push(Object.assign({ pri: true }, sh));
-    const ups = (T.follow_ups || []).filter(id => TOPICS[id]);
-    ups.sort((a, b) => seen.topics.includes(a) - seen.topics.includes(b));
-    ups.slice(0, 3).forEach((id, i) => acts.push({ label: (seen.topics.includes(id) ? '✓ ' : '') + TOPICS[id].title, pri: !sh && !i, fn: goTopic(id) }));
-    // Paño loves a cat break
-    const pref = (brain && brain.dashboard && brain.dashboard.cat_preference) || {};
-    if (TOPICS['meet-the-cats'] && !CAT_TOPICS().includes(T.id) && !ups.includes('meet-the-cats') && Math.random() < (pref.offer_cat_topic_after_other_topics || 0))
-      acts.push({ label: 'Cat break? Tell me about Corner and Panela', fn: goTopic('meet-the-cats') });
-    acts.push({ label: 'Ask about Phill', fn: phillMenu });
-    acts.push({ label: 'I’m good', quiet: true, fn: () => guideRest(pick(((brain && brain.dashboard) || {}).sign_offs || ['Okay! Tap me any time.'])) });
-    return acts;
-  }
-  function runTopic(id) {
-    const T = TOPICS[id];
-    if (!T) return guideMenu('What do you want to do?');
-    const token = ++stepToken;
-    tour = null; talking = 'topic'; ringOff();
-    if (!seen.topics.includes(id)) { seen.topics.push(id); store.set(SEEN_KEY, seen); }
-    const n = T.script.length;
-    const show = async (i, first) => {
-      if (token !== stepToken) return;
-      if (first) { gbub.hidden = true; await moveCat(homeSpot(), false); if (token !== stepToken) return; }
-      const head = `<span class="gstep">${esc(T.title)}${n > 1 ? ` · ${i + 1} of ${n}` : ''}</span>`;
-      const acts = i < n - 1
-        ? [{ label: 'Next', pri: true, fn: () => show(i + 1) }, { label: 'Stop', quiet: true, fn: () => guideRest('Okay! Tap me any time.') }]
-        : topicEnd(T);
-      say(head + safeHtml(forTouch(T.script[i])), acts);
-      if (i === n - 1) cheer();
-    };
-    show(0, true);
-  }
-  function phillMenu() {
-    const token = ++stepToken;
-    tour = null; talking = 'menu'; ringOff();
-    const m = (brain && brain.dashboard && brain.dashboard.menu) || {};
-    const ids = (m.talk_starters || ['phill-30-seconds', 'four-numbers', 'meet-the-cats']).filter(id => TOPICS[id]);
-    const extra = ['role-marinemax', 'case-reports', 'hackathon', 'kind-words', 'resume-versions', 'contact-him'].filter(id => TOPICS[id] && !ids.includes(id));
-    moveCat(homeSpot(), false).then(() => {
-      if (token !== stepToken) return;
-      say(`<span class="gname">Paño</span>${pick(['What do you want to know? I know Phill’s work inside out.', 'Ask away. Phill’s work, the portfolio, or the cats.'])}`, [
-        ...ids.concat(extra).slice(0, 8).map(id => ({ label: (seen.topics.includes(id) ? '✓ ' : '') + TOPICS[id].title, fn: goTopic(id) })),
-        { label: 'Surprise me', fn: () => { const left = Object.keys(TOPICS).filter(id => !seen.topics.includes(id) && TOPICS[id].from !== 'dashboard'); runTopic(pick(left.length ? left : Object.keys(TOPICS))); } },
-        { label: 'Back', quiet: true, fn: () => guideMenu('What do you want to do?') }
-      ]);
-    });
-  }
-
-  // everything he knows, for Claude. Only the facts and his own scripts: nothing else counts.
-  function knowledge() {
-    if (!brain) return '';
-    const plain = s => String(s).replace(/<[^>]+>/g, '');
-    const topics = Object.values(TOPICS).map(t => `${t.id} (${t.title}): ${t.script.map(plain).join(' ')}`).join('\n');
-    return [
-      'FACTS ABOUT PHILL (core.json):', JSON.stringify((brain.core || {}).facts || {}),
-      '', 'FACTS ABOUT THIS DASHBOARD (dashboard.json):', JSON.stringify((brain.dashboard || {}).facts || {}),
-      '', 'GUARDRAILS:', ((brain.core || {}).guardrails || []).join('\n'),
-      '', 'EVERYTHING YOU CAN SAY, BY TOPIC (topic id, title, what you say):', topics
-    ].join('\n');
-  }
-
-  /* ---------- asking Claude, for everything else ---------- */
-  const SYSTEM_BASE = [
-    'You are Paño, a small red cat who guides Phill around his personal dashboard.',
-    'Phill uses this dashboard to launch prototypes for his professional portfolio website.',
-    'You are warm, playful and a little bit cat. You are a guide, not a general assistant.',
-    '',
-    'Every reply must follow these rules:',
-    '- At most 40 words. Shorter is better. One to three plain sentences.',
-    '- Answer the question honestly and usefully first, even when it is off topic. Never refuse an ordinary question, and never scold.',
-    '- Then steer back to something you can actually do, named in "go".',
-    '- The dashboard has only: a clock, a weather card, a launcher for prototypes, a labs bank of built prototypes, and a staging preview. Never suggest anything else exists.',
-    '- Never ask for passwords, keys or personal details. Never promise to remember things between visits.',
-    '- No markdown, no bullet points, no emoji, no quotation marks around your reply.',
-    '',
-    '"go" must be exactly one of:',
-    'tour:launch - show how to launch a prototype',
-    'tour:weather - show the weather card',
-    'tour:labs - show the labs bank of prototypes already built',
-    'talk:goodPrompt - chat about what makes a good prototype prompt',
-    'talk:builder - build a prototype prompt together, question by question',
-    'talk:details - chat about what to write in the Details box',
-    'talk:pipeline - chat about what happens after you press Launch',
-    'talk:feedback - chat about testing a prototype once it is live',
-    'menu - just show the main menu',
-    'topic:<id> - tell one of your stories, using an id from the KNOWLEDGE block. Pick this when the question is about Phill, the portfolio, or Corner and Panela.'
-  ].join('\n');
-  const SYSTEM_BRAIN = [
-    '',
-    'You also know Phill’s professional background, his portfolio website, and his two cats, Corner and Panela. Talk about Phill in the third person; the person holding the phone may not be Phill. Call them you and never guess their name.',
-    'The KNOWLEDGE block below is your only source of facts about Phill, the portfolio, and the cats. If the answer is not there, say you don’t know and don’t make it up. Never invent metrics, employers, dates or testimonials.',
-    'About Corner and Panela you only know a few facts for sure. You may chat about cats in general, but say when you are guessing. Never state a new fact about them as true.',
-    'Never share or ask about personal information: addresses, phone numbers, family, relationships, money, legal, immigration, or health. Phill’s public work email and LinkedIn in the KNOWLEDGE block are fine to share.',
-    '',
-    'KNOWLEDGE:'
-  ].join('\n');
-  const systemPrompt = () => {
-    const k = knowledge();
-    return k ? [{ type: 'text', text: SYSTEM_BASE + '\n' + SYSTEM_BRAIN + '\n' + k, cache_control: { type: 'ephemeral' } }] : SYSTEM_BASE;
-  };
-
-  // where a reply can send you: one of the fixed places, or one of his stories
-  function goFor(key) {
-    if (GO[key]) return GO[key];
-    const m = /^topic:(.+)$/.exec(key || '');
-    if (m && TOPICS[m[1]]) return { label: 'Tell me: ' + TOPICS[m[1]].title, fn: goTopic(m[1]) };
-    return null;
-  }
-
-  const schema = () => ({
-    type: 'object',
-    properties: {
-      reply: { type: 'string', description: 'Paño’s answer, at most 40 words.' },
-      go: { type: 'string', enum: Object.keys(GO).concat(Object.keys(TOPICS).map(id => 'topic:' + id)) }
-    },
-    required: ['reply', 'go'],
-    additionalProperties: false
+  /* ---------- Paño's adapter: what this page has for him to work with ----------
+     The last six entries are what his skills need. Take one out and he stops offering that skill.
+     Every name he saves under starts with dev- on this DEV copy. */
+  const pano = Pano.init({
+    brain: 'dashboard',
+    layout: { bar: { wide: 18, narrow: 12 }, safeArea: true, scrolls: true },
+    keys: { greeted: 'dev-pd-pano-greeted', head: 'dev-pd-pano-head' },
+    idle: { quiet: 10000, waiting: 20000 },
+    memory: { mem: 'dev-pd-pano-mem', seen: 'dev-pd-pano-seen' },
+    fidget: true,
+    windowOf: el => el.closest('section'),
+    tours,
+    background: { desk: $('#wall'), walls: ['plain', 'sunrise', 'ocean'], modes: ['protan', 'deutan', 'tritan', 'mono'], keys: { wall: 'dev-pd-wall', cb: 'dev-pd-cb' } },
+    talks: { fillPrompt },
+    topics: { open: openPortfolio },
+    chat: { keys: { key: 'dev-pd-pano-key' } }
   });
-
-  async function askClaude(text) {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: Object.assign({ 'content-type': 'application/json' }, authHeaders(panoKey())),
-      body: JSON.stringify({
-        model: 'claude-opus-5-5',
-        max_tokens: 1200,
-        system: systemPrompt(),
-        output_config: { effort: 'low', format: { type: 'json_schema', schema: schema() } },
-        messages: [...chatLog.slice(-6), { role: 'user', content: text }]
-      })
-    });
-    if (!res.ok) {
-      let detail = '';
-      try { detail = (await res.json()).error.message || ''; } catch (e) {}
-      const err = new Error(detail); err.status = res.status; throw err;
-    }
-    const data = await res.json();
-    if (data.stop_reason === 'refusal') return { reply: 'I’d rather not go there. Let’s make something instead.', go: 'menu' };
-    const raw = ((data.content || []).find(b => b.type === 'text' && b.text) || {}).text || '';
-    // normally structured JSON; if it ever comes back as plain prose, still say it
-    let out = null;
-    try { out = JSON.parse(raw); } catch (e) {}
-    if (!out || typeof out.reply !== 'string' || !out.reply.trim()) {
-      const plain = raw.trim().replace(/^[{\[].*/s, '').trim();
-      if (!plain) throw new Error('empty reply');
-      out = { reply: plain.split(/(?<=[.!?])\s/).slice(0, 2).join(' ').slice(0, 220), go: 'menu' };
-    }
-    if (!goFor(out.go)) out.go = 'menu';
-    chatLog.push({ role: 'user', content: text }, { role: 'assistant', content: out.reply });
-    chatLog = chatLog.slice(-6);
-    return out;
-  }
-
-  function askError(e) {
-    try { console.warn('[Paño] Claude call failed —', e.status || 'no status', e.message || e); } catch (_) {}
-    if (e.status === 401 && /cors/i.test(e.message || ''))
-      return { reply: 'Your Anthropic account blocks browser requests, so I can’t think from here. Scripts still work!', go: 'menu' };
-    if (e.status === 401 || e.status === 403) {
-      memKey = ''; store.del(KEY_KEY);
-      return { reply: 'Anthropic rejected that key — wrong, revoked, or no credit.', go: 'key' };
-    }
-    if (e.status === 429) return { reply: 'Too many questions at once! Give me a minute.', go: 'menu' };
-    if (e.status === 400 && /credit|balance/i.test(e.message || '')) return { reply: 'My thinking account is empty. Top it up at the Anthropic console.', go: 'menu' };
-    return { reply: 'My brain just hiccuped. Want to do something instead?', go: 'menu' };
-  }
-
-  /* ---------- showing an answer ---------- */
-  function showAnswer(out) {
-    if (out.go === 'rest') return guideRest(out.reply || 'Okay! Tap me any time.');
-    if (out.go === 'key') return askForKey(out.reply);
-    const target = goFor(out.go) || GO.menu;
-    const acts = [{ label: target.label, pri: true, fn: target.fn }];
-    if (out.go !== 'menu') acts.push({ label: 'Back to the menu', fn: () => guideMenu('What do you want to do?') });
-    acts.push({ label: 'I’m good', quiet: true, fn: () => guideRest('Okay! Tap me any time.') });
-    say(`<span class="gname">Paño</span>${esc(out.reply)}`, acts);
-    cheer();
-  }
-
-  async function ask(text) {
-    if (thinking) return;
-    const token = ++stepToken;
-    tour = null; talking = 'chat'; ringOff();
-    say(`<span class="gname">Paño</span><span class="gyou">You: ${esc(text)}</span>`, []);
-    const hit = scripted(text);
-    if (hit) { await sleep(260); if (token === stepToken) showAnswer(hit); return; }
-    // one of his stories about Phill, the portfolio, the dashboard or the cats: free, never leaves the page
-    const topic = matchTopic(text);
-    if (topic) { await sleep(260); if (token === stepToken) runTopic(topic); return; }
-    if (!panoKey()) {
-      const fb = (brain && brain.dashboard && brain.dashboard.fallbacks) || {};
-      return say(`<span class="gname">Paño</span>${esc(fb.unknown || 'Hmm, I don’t know that one, and I don’t make things up.')} With a brain, I could think about it.`, [
-        ...(hasBrain() ? [{ label: 'Ask about Phill', pri: true, fn: phillMenu }] : []),
-        { label: 'Give Paño a brain', fn: () => askForKey('') },
-        { label: 'Back to the menu', quiet: true, fn: () => guideMenu('What do you want to do?') }
-      ]);
-    }
-    if (asks >= ASK_CAP) return showAnswer({ reply: 'That’s a lot of thinking for one visit. Let’s go do something!', go: 'menu' });
-    asks++;
-    thinking = true;
-    say(`<span class="gname">Paño</span><span class="gyou">You: ${esc(text)}</span><span class="gthink">thinking<i>.</i><i>.</i><i>.</i></span>`,
-        [{ label: 'Never mind', quiet: true, fn: () => { stepToken++; guideRest(); } }]);
-    let out;
-    try { out = await askClaude(text); }
-    catch (e) { out = askError(e); }  // the real reason goes to the browser console
-    finally { thinking = false; }
-    if (token === stepToken) showAnswer(out);
-  }
-
-  gask.addEventListener('submit', ev => {
-    ev.preventDefault();
-    const v = gaskIn.value.trim();
-    if (!v) return;
-    gaskIn.value = ''; gaskIn.blur();
-    ask(v);
-  });
-
-  /* ---------- giving Paño a brain ---------- */
-  function askForKey(lead) {
-    const token = ++stepToken;
-    tour = null; talking = 'key'; ringOff();
-    gkey.hidden = false; gask.hidden = true;
-    try { console.warn('[Paño] asking for a key — in memory:', !!memKey, '| in storage:', !!store.get(KEY_KEY, ''), '| origin:', location.origin); } catch (_) {}
-    say(`<span class="gname">Paño</span>${lead ? esc(lead) + ' ' : ''}Paste an Anthropic API key and I can answer anything, in my own words. It stays on this device.`, [
-      { label: 'Get a key ↗', fn: () => window.open('https://platform.claude.com/settings/keys', '_blank', 'noopener') },
-      { label: 'Not now', quiet: true, fn: () => guideRest('Okay! I’ll stick to what I know.') }
-    ]);
-    setTimeout(() => { if (token === stepToken) gkeyIn.focus(); }, 60);
-  }
-  // An API key and an OAuth token are sent differently. Try whichever we were given.
-  const isOauth = k => /^sk-ant-oat/i.test(k);
-  function authHeaders(k) {
-    const h = { 'anthropic-version': '2026-10-21', 'anthropic-dangerous-direct-browser-access': 'true' };
-    if (isOauth(k)) { h['authorization'] = 'Bearer ' + k; h['anthropic-beta'] = 'oauth-2025-04-20'; }
-    else h['x-api-key'] = k;
-    return h;
-  }
-
-  // the look-alikes that cannot work, caught before any request
-  function wrongKind(v) {
-    if (/^sk-ant-admin/i.test(v)) return 'That’s an Admin key, which can’t send messages. I need one that starts sk-ant-api.';
-    if (/^(github_pat_|ghp_)/.test(v)) return 'That’s your GitHub token! Different door. I need an Anthropic key starting sk-ant-api.';
-    if (/^sk-/.test(v) && !/^sk-ant-/.test(v)) return 'That looks like another provider’s key. I need an Anthropic one starting sk-ant-api.';
-    if (!/^sk-ant-\S{20,}$/.test(v)) return 'That doesn’t look like a key. It starts with sk-ant-api and is quite long.';
-    return null;
-  }
-
-  // a free GET that proves the credential works, so you find out now instead of later
-  async function testKey(k) {
-    let res;
-    try {
-      res = await fetch('https://api.anthropic.com/v1/models?limit=1', { headers: authHeaders(k) });
-    } catch (e) { return 'I couldn’t reach Anthropic at all. Check your connection and try again.'; }
-    if (res.ok) return null;
-    let msg = '';
-    try { msg = (await res.json()).error.message || ''; } catch (e) {}
-    try { console.warn('[Paño] key check failed —', res.status, msg); } catch (e) {}
-    if (/cors/i.test(msg)) return 'Your Anthropic account blocks browser requests, so no key will work here.';
-    if (/credit|balance|quota/i.test(msg)) return 'The key is fine, but the account has no API credit. Add some at the Anthropic console and try again.';
-    if (isOauth(k)) return 'Anthropic won’t take that OAuth token for this. You need a real API key, starting sk-ant-api, from an account with API credit.';
-    if (res.status === 401) return 'Anthropic says that key isn’t valid. Check it was copied whole and hasn’t been revoked.';
-    if (res.status === 403) return 'That key isn’t allowed to send messages. Check its permissions.';
-    return 'Anthropic turned that key away (' + res.status + '). ' + msg;
-  }
-
-  gkey.addEventListener('submit', async ev => {
-    ev.preventDefault();
-    const v = gkeyIn.value.trim();
-    const bad = wrongKind(v);
-    if (bad) { say('<span class="gname">Paño</span>' + esc(bad), []); gkey.hidden = false; gkeyIn.focus(); return; }
-    const token = ++stepToken;
-    say('<span class="gname">Paño</span><span class="gthink">checking that key<i>.</i><i>.</i><i>.</i></span>', []);
-    const problem = await testKey(v);
-    if (token !== stepToken) return;
-    if (problem) {
-      say('<span class="gname">Paño</span>' + esc(problem), [
-        { label: 'Get a key ↗', fn: () => window.open('https://platform.claude.com/settings/keys', '_blank', 'noopener') },
-        { label: 'Not now', quiet: true, fn: () => guideRest('Okay! I’ll stick to what I know.') }
-      ]);
-      gkey.hidden = false; gkeyIn.focus(); return;
-    }
-    memKey = v; store.set(KEY_KEY, v); gkeyIn.value = ''; chatLog = [];
-    const kept = store.get(KEY_KEY, '') === v;
-    cheer();
-    guideMenu(kept
-      ? pick(['Ooh, I can think now! What do you want to do?', 'Brain installed. What do you want to do?'])
-      : 'I can think now, but this browser won’t let me keep the key — private mode, maybe. It’ll last until you close the tab. What do you want to do?');
-  });
-
-  function brainMenu() {
-    const token = ++stepToken;
-    tour = null; talking = 'key'; ringOff();
-    say('<span class="gname">Paño</span>I have a brain on this device. Ask me anything in the box, or take it back.', [
-      { label: 'Forget my brain', fn: () => { memKey = ''; store.del(KEY_KEY); chatLog = []; asks = 0; guideMenu('Back to just my script. What do you want to do?'); } },
-      { label: 'Back', quiet: true, fn: () => guideMenu('What do you want to do?') }
-    ]);
-    if (token !== stepToken) return;
-  }
-
-  $('#gx').addEventListener('click', () => guideRest());
-  addEventListener('keydown', e => { if (e.key === 'Escape' && !gbub.hidden) guideRest(); });
-  addEventListener('resize', () => {
-    if (gcat.hidden) return;
-    if (headMode) setCat(headSpot());
-    else if (dragging) {}
-    else if (!tour) setCat(gbub.hidden && !hasInteracted ? cornerSpot() : homeSpot());
-    else if (ringTarget) goNear(ringTarget).then(placeBubble);
-    placeBubble();
-  });
-  // the page scrolls under Paño: during a step, hop back next to the thing being pointed at
-  let scrollT = 0;
-  addEventListener('scroll', () => {
-    if (!tour || !ringTarget || autoScroll || narrow()) return;
-    clearTimeout(scrollT);
-    scrollT = setTimeout(() => { if (tour && ringTarget) goNear(ringTarget).then(placeBubble); }, 160);
-  }, { passive: true });
-  // keep Paño and the bottom sheet above the on-screen keyboard
-  if (window.visualViewport) {
-    const vv = visualViewport;
-    const onVV = () => {
-      const k = Math.max(0, Math.round(innerHeight - vv.height - vv.offsetTop));
-      if (Math.abs(k - kb) < 2) return;
-      kb = k; document.documentElement.style.setProperty('--kb', kb + 'px');
-      if (!gcat.hidden && narrow() && !headMode && !dragging && !(gbub.hidden && !hasInteracted)) setCat(dockSpot());
-    };
-    vv.addEventListener('resize', onVV); vv.addEventListener('scroll', onVV);
-  }
-
-  // say hello once per visit; returning in the same session, Paño just sits there
-  setTimeout(() => {
-    gcat.hidden = false;
-    let greeted = false, wasHead = false;
-    try { wasHead = sessionStorage.getItem('panoHead') === '1'; } catch (e) {}
-    try { greeted = sessionStorage.getItem('panoGreeted') === '1'; sessionStorage.setItem('panoGreeted', '1'); } catch (e) {}
-    // he went up to his head spot earlier this visit: he's still there
-    if (wasHead) { hasInteracted = true; enterHead(true); }
-    else {
-      setCat(cornerSpot(), false);
-      anim(gbodyEl, [{ transform: 'translateY(40px) scale(.5)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: SPRING_WIN.duration, easing: SPRING_WIN.easing });
-    }
-    if (!greeted && !wasHead) setTimeout(() => guideMenu(hello() + ' I can show you around, or we can just talk. What do you want to do?'), 700);
-    scheduleChat(greeted ? 40 : 60, greeted ? 100 : 150);
-    setTimeout(fidget, 12000);
-  }, 900);
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#gbubble').hidden) pano.rest(); });
+  // an older version kept a copy of his brain on the device; it is not used any more
+  try { localStorage.removeItem('dev-pd-pano-brain'); } catch (e) {}
 })();
 </script>
 </body>
